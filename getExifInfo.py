@@ -1,3 +1,4 @@
+
 from PIL import Image
 from PIL.ExifTags import TAGS
 import sys
@@ -10,10 +11,13 @@ def get_exif_info(path):
     allowed_ext = ['jpg', 'JPG']
     images = [fn for fn in os.listdir(path) if any(fn.endswith(ext) for ext in allowed_ext) and not fn.startswith('.')]
 
-    print images
     sum_fl = 0
     sum_ap = 0
     sum_et = 0
+    num_images = len(images)
+    if num_images == 0:
+    	print "Directory contains no images!!"
+    	return 0
     for n in images:
     	if path != ".":
     		pic = Image.open(path+"/"+n)
@@ -35,7 +39,7 @@ def get_exif_info(path):
         		#print "ExposureTime", value[0], ":", value[1]
         		sum_et = sum_et + value[0] *1.0/ value[1]
 
-    num_images = len(images)
+    
     avr_focalL = sum_fl/num_images
     avr_ap = sum_ap/num_images 
     avr_et = sum_et/num_images 
