@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block result %}
+     <div class="container">
+         {% if result %}
+         <div class="text-center">
+             <h2>{{result}}</h2>
+         </div>
+         {% endif %}
+         {% if image_path %}
+         <img class="img-portfolio img-responsive" src="{{image_path}}">
+         {% endif %}
+    </div>
+
+
+
+
+
+        <footer class="footer">
+            <div class="text-center">
+            <p>&copy; seb1b 2016</p>
+                </div>
+        </footer>
+ 
+{% endblock %}
